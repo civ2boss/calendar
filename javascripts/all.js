@@ -17,20 +17,20 @@ var calendar = (function () {
 
       if (e.target.className === 'prev') {
         switchMonth(false);
-      }
-    });
-    document.addEventListener("click", function(e){
-      e.preventDefault();
-
-      if (e.target.className === 'next') {
+      } else if (e.target.className === 'next') {
         switchMonth(true);
+      } else if (e.target.className === 'cal-month-day') {
+        highlightDate(e.target.innerText);
       }
     });
-    document.addEventListener("click", function(e){
+
+    document.addEventListener("keyup", function(e){
       e.preventDefault();
 
-      if (e.target.className === 'cal-month-day') {
-        highlightDate(e.target.innerText);
+      if (e.keyCode === 37) {
+        switchMonth(false);
+      } else if (e.keyCode === 39) {
+        switchMonth(true);
       }
     });
   }
